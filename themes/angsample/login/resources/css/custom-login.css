@@ -1,0 +1,13 @@
+.login-pf body {
+    height: 100%;
+    background: none;
+    background-color: #F9F9F9;
+}
+
+div.kc-logo-text {
+    background-image: url(../img/Logo-angsample.png);
+    background-repeat: no-repeat;
+    height: 63px;
+    width: 200px;
+    margin: 0 auto;
+}

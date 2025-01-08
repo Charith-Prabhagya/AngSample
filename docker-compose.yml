@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_USER=admin                        # Default admin username
+      - KEYCLOAK_PASSWORD=admin                    # Default admin password
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin          # Set your desired admin username
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin          # Set your desired admin password
+      - DB_VENDOR=h2                               # Use H2 database (for development); change to postgres or mysql for production
+    volumes:
+      - ./themes:/opt/keycloak/themes              # Mount the custom themes directory
+    command:
+      ["start-dev"]
+      
+  mailhog:                                         # fake SMTP server
+    image: mailhog/mailhog:latest           
+    container_name: mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
